@@ -43,6 +43,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const toSlug = (text) => text.toLowerCase().replace(/\s+/g, "-");
+
   return (
     <header
       ref={headerRef}
@@ -83,10 +85,13 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className={`${styles.nav} ${styles["desktop-nav"]}`}>
-          {["Home", "Our Flow", "About", "Example"].map((item) => (
+          {["Home", "Our Flow", "About", "Example"].map((item) => {
+            const slug = toSlug(item);
+
+            return (
               <a
                 key={item}
-              href={`#${item.toLowerCase()}`}
+                href={`#${slug}`}
                 onClick={() => setActiveNav(item)}
                 className={`${styles["nav-link"]} ${
                   activeNav === item ? styles["nav-link-active"] : ""
@@ -94,7 +99,8 @@ const Header = () => {
               >
                 {item}
               </a>
-          ))}
+            );
+          })}
         </nav>
 
         {/* Desktop Actions */}
@@ -138,21 +144,45 @@ const Header = () => {
         }`}
       >
         <nav className={styles["mobile-nav"]}>
-          {["Features", "Agents", "Demo"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={styles["mobile-nav-link"]}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
+          {["Home", "Our Flow", "About", "Example"].map((item) => {
+            const slug = toSlug(item);
+
+            return (
+              <a
+                key={item}
+                href={`#${slug}`}
+                className={styles["mobile-nav-link"]}
+                onClick={() => {
+                  setActiveNav(item); // ✅ active set
+                  setMobileMenuOpen(false); // ✅ close menu
+                }}
+              >
+                {item}
+              </a>
+            );
+          })}
         </nav>
 
         <div className={styles["mobile-actions"]}>
-          <button className={styles["mobile-login-btn"]}>Login</button>
-          <button className={styles["mobile-cta-btn"]}>Get Started</button>
+          <button
+            className={styles["mobile-login-btn"]}
+            onClick={() => {
+              setOpenLogin(true); // ✅ open login modal
+              setMobileMenuOpen(false); // ✅ close menu
+            }}
+          >
+            Login
+          </button>
+
+          <button
+            className={styles["mobile-cta-btn"]}
+            onClick={() => {
+              setOpenRegister(true); // ✅ open register modal
+              setMobileMenuOpen(false); // ✅ close menu
+            }}
+          >
+            Get Started
+          </button>
         </div>
       </div>
 

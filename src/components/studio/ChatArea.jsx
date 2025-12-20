@@ -404,6 +404,26 @@ export default function ChatArea({
     chat?.messages ||
     [];
 
+  useEffect(() => {
+    const pending = localStorage.getItem("pending_prompt");
+
+    if (pending) {
+      try {
+        const parsed = JSON.parse(pending);
+
+        if (parsed?.message) {
+          setInput(parsed.message); // ✅ textarea auto fill
+        }
+
+        // ✅ Fill થયા પછી remove
+        localStorage.removeItem("pending_prompt");
+      } catch (err) {
+        console.error("Invalid pending_prompt data");
+        localStorage.removeItem("pending_prompt");
+      }
+    }
+  }, []);
+
   return (
     <div className={styles.chatArea}>
       <div className={styles.messages}>

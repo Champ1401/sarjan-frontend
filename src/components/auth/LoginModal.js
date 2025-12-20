@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -48,6 +48,21 @@ const LoginModal = ({ open, onClose, onOpenRegister }) => {
     reset();
     onClose();
   };
+
+useEffect(() => {
+  if (open) {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100vh";
+  } else {
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
+  };
+}, [open]);
 
   if (!open) return null;
 

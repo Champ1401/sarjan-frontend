@@ -12,6 +12,9 @@
 .modal {
   width: 100%;
   max-width: 420px;
+  max-height: 90vh; /* 🔥 IMPORTANT */
+  overflow-y: auto; /* 🔥 modal andar scroll */
+
   background: rgba(44, 62, 80, 0.85);
   border-radius: 16px;
   padding: 2.5rem;
@@ -19,7 +22,6 @@
   border: 1px solid rgba(94, 234, 212, 0.3);
   box-shadow: 0 0 40px rgba(94, 234, 212, 0.25);
 }
-
 
 .logoWrapper {
   display: flex;
@@ -36,7 +38,6 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-
 .eyeIcon {
   position: absolute;
   right: 12px;
@@ -46,7 +47,6 @@
   color: #666;
   font-size: 16px;
 }
-
 
 .title {
   color: #5eead4;
@@ -106,7 +106,6 @@
   color: #fff;
   cursor: pointer;
 }
-
 
 .switchAuth {
   margin-top: 1.2rem;
