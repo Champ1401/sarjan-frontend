@@ -1,0 +1,51 @@
+.footer {
+  margin-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 48px 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.brand h2 {
+  font-size: 20px;
+}
+
+.brand span {
+  color: #00f6ff;
+}
+
+.brand p {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.links {
+  display: flex;
+  gap: 60px;
+}
+
+.links h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.links p {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+
+.copy {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+  padding-bottom: 20px;
+}

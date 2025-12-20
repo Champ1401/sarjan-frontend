@@ -1,141 +1,113 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+.hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
   display: flex;
-  min-height: 100vh;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  overflow: hidden;
 }
 
-.main {
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  z-index: 2;
+}
+
+/* Left Content */
+.content h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.content h1 span {
+  background: linear-gradient(90deg, #00f6ff, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content p {
+  margin-top: 20px;
+  font-size: 16px;
+  max-width: 500px;
+  opacity: 0.8;
+}
+
+.actions {
+  margin-top: 32px;
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
   gap: 16px;
-  font-size: 14px;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+.primaryBtn {
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00f6ff, #8b5cf6);
+  color: #000;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.secondaryBtn {
+  padding: 12px 26px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  cursor: pointer;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* Right Visual */
+.visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 40px;
+  justify-content: center;
+  align-content: center;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.agent {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  box-shadow: 0 0 30px rgba(0,246,255,0.25);
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.agent:hover {
+  transform: scale(1.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+/* Background Glow */
+.glowCyan {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #00f6ff;
+  opacity: 0.15;
+  filter: blur(120px);
+  top: -100px;
+  left: -100px;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.glowPurple {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #8b5cf6;
+  opacity: 0.15;
+  filter: blur(120px);
+  bottom: -100px;
+  right: -100px;
 }

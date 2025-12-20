@@ -1,0 +1,88 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #00f6ff;
+}
+
+.logo em {
+  color: #8b5cf6;
+  font-style: normal;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+}
+
+.nav a {
+  position: relative;
+  opacity: 0.75;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #00f6ff, #ec4899);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+}
+
+.login {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.login:hover {
+  opacity: 1;
+}
+
+.cta {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00f6ff, #8b5cf6);
+  color: #000;
+}
