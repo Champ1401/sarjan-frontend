@@ -4,8 +4,13 @@ import SarjanAIHero from "@/components/Home/HeroSection";
 import FlowPage from "@/components/OurFlow/flow";
 import WhySarjanAI from "@/components/why choose us/about";
 import ExamplesSection from "@/components/Example/ExamplesSection";
+import { useState } from "react";
+import LoginModal from "@/components/auth/LoginModal";
 
 export default function Home() {
+
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <>
       <Head>
@@ -28,10 +33,14 @@ export default function Home() {
         />
 
       </Head>
-      <SarjanAIHero />
+      <SarjanAIHero  onRequireLogin={() => setShowLogin(true)}/>
       <FlowPage />
       <WhySarjanAI />
       <ExamplesSection />
+        <LoginModal
+        open={showLogin}
+        onClose={() => setShowLogin(false)}
+      />
     </>
   );
 }

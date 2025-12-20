@@ -22,7 +22,7 @@ const steps = [
 
 export default function SarjanPerfectFlow() {
     return (
-        <section className={styles.wrapper}>
+        <section className={styles.wrapper} id="our-flow">
             {/* HEADER */}
             <div className={styles.header}>
                 <span className={styles.eyebrow}>SARJAN AI ARCHITECTURE</span>

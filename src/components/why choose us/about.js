@@ -47,7 +47,7 @@ const features = [
 
 export default function WhySarjanAI() {
     return (
-        <section className={styles.wrapper}>
+        <section className={styles.wrapper} id="about">
             <div className={styles.container}>
                 {/* Header */}
                 <header className={styles.header}>

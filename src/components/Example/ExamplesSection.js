@@ -35,7 +35,7 @@ export default function ChatbotDemo() {
     }, [step]);
 
     return (
-        <section className={styles.demoSection}>
+        <section className={styles.demoSection} id="example">
             <div className={styles.container}>
                 {/* Left Explanation */}
                 <div className={styles.info}>
