@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../../styles/ChatArea.module.css";
 import ReactMarkdown from "react-markdown";
 import { io } from "socket.io-client";
+import { FaUser, FaRobot, FaCode, FaPenNib, FaLightbulb, FaGraduationCap } from "react-icons/fa6";
 
 export default function ChatArea({ chat, activeChatId, chats, setChats, refreshHistory, setActiveChatId }) {
   const [input, setInput] = useState("");
@@ -350,7 +351,39 @@ export default function ChatArea({ chat, activeChatId, chats, setChats, refreshH
     <div className={styles.chatArea}>
       <div className={styles.messages}>
         {currentMessages.length === 0 && !loading && (
-          <div className={styles.empty}>Start a new creative session ✨</div>
+          <div className={styles.emptyStateContainer}>
+
+            <h2 className={styles.emptyTitle}>Unlock Your Creativity</h2>
+            <p className={styles.emptySubtitle}>
+              Sarjan AI is ready to assist. Choose a starter prompt below or type your own idea to begin.
+            </p>
+
+            <div className={styles.quickPromptsGrid}>
+              <div className={styles.promptCard} onClick={() => setInput("Write a creative blog post about AI trends")}>
+                <FaPenNib className={styles.promptIcon} />
+                <div className={styles.promptTitle}>Draft Content</div>
+                <div className={styles.promptDesc}>Write creative blog posts or articles</div>
+              </div>
+
+              <div className={styles.promptCard} onClick={() => setInput("Explain how Neural Networks work in simple terms")}>
+                <FaGraduationCap className={styles.promptIcon} />
+                <div className={styles.promptTitle}>Learn a Concept</div>
+                <div className={styles.promptDesc}>Explain complex topics simply</div>
+              </div>
+
+              <div className={styles.promptCard} onClick={() => setInput("Debug this React useEffect code: ")}>
+                <FaCode className={styles.promptIcon} />
+                <div className={styles.promptTitle}>Debug Code</div>
+                <div className={styles.promptDesc}>Fix errors and optimize scripts</div>
+              </div>
+
+              <div className={styles.promptCard} onClick={() => setInput("Brainstorm 5 marketing ideas for a coffee shop")}>
+                <FaLightbulb className={styles.promptIcon} />
+                <div className={styles.promptTitle}>Brainstorming</div>
+                <div className={styles.promptDesc}>Generate unique ideas instantly</div>
+              </div>
+            </div>
+          </div>
         )}
 
         {currentMessages.map((msg, i) => {
@@ -358,37 +391,40 @@ export default function ChatArea({ chat, activeChatId, chats, setChats, refreshH
           return (
             <div
               key={i}
-              className={`${styles.message} ${isUser ? styles.user : styles.ai
-                }`}
+              className={`${styles.messageWrapper} ${isUser ? styles.userWrapper : styles.aiWrapper}`}
             >
-              {msg.img && (
-                <div className={styles.msgImgWrapper}>
-                  <img
-                    src={
-                      typeof msg.img === "string"
-                        ? msg.img
-                        : URL.createObjectURL(msg.img)
-                    }
-                    alt="uploaded"
-                    className={styles.msgImg}
-                  />
-                </div>
-              )}
-              {/* Backend uses 'content', frontend optimistic uses 'text' */}
-              <div className={styles.markdownContent}>
-                {isUser ? (
-                  <span>{msg.content || msg.text}</span>
-                ) : (
-                  <>
-                    {/* If it's a thinking (processing) message, show the Dropdown */}
-                    {msg.isThinking && msg.thoughts ? (
-                      <ThinkingBlock thoughts={msg.thoughts} />
-                    ) : (
-                      // Otherwise show final markdown
-                      <ReactMarkdown>{msg.content || msg.text}</ReactMarkdown>
-                    )}
-                  </>
+              <div className={`${styles.avatar} ${isUser ? styles.userAvatar : styles.aiAvatar}`}>
+                {isUser ? <FaUser /> : <FaRobot />}
+              </div>
+
+              <div className={`${styles.messageBubble} ${isUser ? styles.userBubble : styles.aiBubble}`}>
+                {msg.img && (
+                  <div className={styles.msgImgWrapper}>
+                    <img
+                      src={
+                        typeof msg.img === "string"
+                          ? msg.img
+                          : URL.createObjectURL(msg.img)
+                      }
+                      alt="uploaded"
+                      className={styles.msgImg}
+                    />
+                  </div>
                 )}
+
+                <div className={styles.markdownContent}>
+                  {isUser ? (
+                    <span>{msg.content || msg.text}</span>
+                  ) : (
+                    <>
+                      {msg.isThinking && msg.thoughts ? (
+                        <ThinkingBlock thoughts={msg.thoughts} />
+                      ) : (
+                        <ReactMarkdown>{msg.content || msg.text}</ReactMarkdown>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           );

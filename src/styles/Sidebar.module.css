@@ -1,78 +1,168 @@
+/* Main Sidebar Container */
 .sidebar {
-  width: 260px;
-  background: #11141c;
+  width: 280px;
+  background: #020617;
+  /* Deep Dark Blue matching homepage */
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  height: 100vh;
+  position: relative;
+  z-index: 20;
 }
 
-.newChat {
-  background: #1f2937;
-  color: white;
-  border: none;
-  padding: 12px;
+/* Header & Brand */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-left: 8px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #5eead4, #a855f7);
   border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #000;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(94, 234, 212, 0.4);
 }
 
-.history {
+.brandName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.brandAccent {
+  color: #5eead4;
+  /* Teal accent */
+}
+
+/* New Chat Button */
+.newChat {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.newChat:hover {
+  background: rgba(94, 234, 212, 0.1);
+  border-color: rgba(94, 234, 212, 0.4);
+  color: #5eead4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(94, 234, 212, 0.2);
+}
+
+.newChat .icon {
+  font-size: 14px;
+}
+
+/* History Section */
+.historySection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.historyList {
   flex: 1;
   overflow-y: auto;
+  padding-right: 4px;
+  /* Space for scrollbar */
 }
 
+/* Scrollbar styling */
+.historyList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.historyList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.historyList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Chat Items */
 .chatItem {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
   font-size: 14px;
-  border-radius: 6px;
-  margin-bottom: 6px;
+  border-radius: 10px;
+  margin-bottom: 4px;
   cursor: pointer;
-  opacity: 0.7;
+  color: #94a3b8;
+  /* Muted text */
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .chatItem:hover {
-  background: #1f2937;
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e2e8f0;
 }
 
 .active {
-  background: linear-gradient(135deg, #00f6ff33, #8b5cf633);
-  opacity: 1;
+  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), transparent);
+  border-left: 2px solid #5eead4;
+  /* Teal indicator */
+  color: #fff;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-
-.user {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 12px;
+.chatIcon {
+  font-size: 14px;
+  opacity: 0.7;
 }
 
-.userInfo {
-  cursor: pointer;
+.chatTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.userInfo p {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.menu {
-  margin-top: 8px;
-  background: #1f2937;
-  border-radius: 8px;
-  padding: 8px;
-}
-
-.menu p {
-  padding: 8px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.menu p:hover {
-  background: #111827;
-}
-
-.logout {
-  color: #ef4444;
+/* User Section */
+.userSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+  margin-top: 16px;
 }
