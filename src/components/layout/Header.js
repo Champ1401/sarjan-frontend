@@ -40,7 +40,7 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className={`${styles.nav} ${styles["desktop-nav"]}`}>
-          {["Features", "Agents", "Demo"].map((item) => (
+          {["Home", "Our Flow", "About", "Example"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
