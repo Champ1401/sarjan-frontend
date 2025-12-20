@@ -84,16 +84,16 @@ const Header = () => {
         {/* Desktop Nav */}
         <nav className={`${styles.nav} ${styles["desktop-nav"]}`}>
           {["Home", "Our Flow", "About", "Example"].map((item) => (
-            <a
-              key={item}
+              <a
+                key={item}
               href={`#${item.toLowerCase()}`}
-              onClick={() => setActiveNav(item)}
-              className={`${styles["nav-link"]} ${
-                activeNav === item ? styles["nav-link-active"] : ""
-              }`}
-            >
-              {item}
-            </a>
+                onClick={() => setActiveNav(item)}
+                className={`${styles["nav-link"]} ${
+                  activeNav === item ? styles["nav-link-active"] : ""
+                }`}
+              >
+                {item}
+              </a>
           ))}
         </nav>
 
